@@ -47,6 +47,14 @@ On your notebook instance/ JupyterLab console, open the Tensorflow 2 (local) Lau
 - the 3rd is to create and run a custom job on Vertex AI using MultiWorkerMirroredStrategy
   - MultiWorkerMirroredStrategy is from the TF model in task.py main function
   - 2 workers as specified in worker_pool_specs
- 
+
+## Step 4
+After successful run of all cells, a Custom Job on Vertex AI is created.
+It will be queued and prepared for provisioning, some waiting time is excepted.
+You should get the status from tne console as well as from Logs Explorer.
+The latter gives you more information regarding the progress of training, information and error of the job, lest it is not real-time basis. Still it is the best source for troubleshooting any problems.
+If everything is fine, the training job will be completed and the Saved_Model (in protocolbuffer) and other artifacts will be saved to Cloud Storage (or you can save it on Artifact Registry - which is the better option)
+
+
     
 
