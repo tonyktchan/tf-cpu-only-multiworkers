@@ -61,7 +61,8 @@ def create_model():
 def main():  
 
   # Create distribution strategy
-  strategy = tf.distribute.MirroredStrategy()
+  # strategy = tf.distribute.MirroredStrategy()
+  strategy = tf.distribute.MultiWorkerMirroredStrategy()
 
   # Get data
   GLOBAL_BATCH_SIZE = BATCH_SIZE * strategy.num_replicas_in_sync
