@@ -34,7 +34,7 @@ Please also make sure the tag: multi_machine or any unique tag you prefer is use
 ## Step 2
 As indicated in the Dockerfile, you need to create a trainer directory with task.py undeer it since the entrypoint for the container will be the task.py as a module (task) under trainer (trainer/task).
 
-The task.py is the same as from Point 5 of the origin repo, it is the same for either a single worker or multiple workers.
+The task.py is the same as from Point 5 of the origin repo, it is the same for either a single worker or multiple workers except the strategy used will be : MultiWorkerMirroredStrategy()
 
 ## Step 3
 When your image and task.py python file containing the CNN model and flower images (Training Data) are all ready, you can start your custom training on the Jupyter notebook.
