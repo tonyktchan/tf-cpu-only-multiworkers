@@ -59,9 +59,14 @@ If everything is fine, the training job will be completed and the Saved_Model (i
 
 ![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/7bf5cd1f-7325-4fa7-8087-2f57ac88a956)
 
+
 and the SavedModel can be found undeer the 'multi-machine-output' folder (dummy folder in fact):
 
+
 ![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/a4073ae2-98e4-47c0-a4eb-ab80465771d9)
+
+By then, your ML model is ready to be deployed!
+
 
     
 
