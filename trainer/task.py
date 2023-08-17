@@ -60,13 +60,13 @@ def create_model():
   return model
 
 def _is_chief(task_type, task_id):
-      '''Helper function. Determines if machine is chief.'''
+  '''Helper function. Determines if machine is chief.'''
 
   return task_type == 'chief'
 
 
 def _get_temp_dir(dirpath, task_id):
-      '''Helper function. Gets temporary directory for saving model.'''
+  '''Helper function. Gets temporary directory for saving model.'''
 
   base_dirpath = 'workertemp_' + str(task_id)
   temp_dir = os.path.join(dirpath, base_dirpath)
@@ -74,7 +74,7 @@ def _get_temp_dir(dirpath, task_id):
   return temp_dir
 
 def write_filepath(filepath, task_type, task_id):
-      '''Helper function. Gets filepath to save model.'''
+  '''Helper function. Gets filepath to save model.'''
 
   dirpath = os.path.dirname(filepath)
   base = os.path.basename(filepath)
