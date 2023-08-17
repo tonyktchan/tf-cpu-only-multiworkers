@@ -34,7 +34,7 @@ Please also make sure the tag: multi_machine or any unique tag you prefer is use
 ## Step 2
 As indicated in the Dockerfile, you need to create a trainer directory with task.py undeer it since the entrypoint for the container will be the task.py as a module (task) under trainer (trainer/task).
 
-The task.py is the same as from Point 5 of the origin repo, it is the same for either a single worker or multiple workers except the strategy used will be : MultiWorkerMirroredStrategy()
+The task.py is based on Point 5 of the origin repo, several functions are added for multiple workers and the most important one is to ensure the strategy used will be : MultiWorkerMirroredStrategy()
 
 ## Step 3
 When your image and task.py python file containing the CNN model and flower images (Training Data) are all ready, you can start your custom training on the Jupyter notebook.
@@ -47,6 +47,7 @@ On your notebook instance/ JupyterLab console, open the Tensorflow 2 (local) Lau
 - the 3rd is to create and run a custom job on Vertex AI using MultiWorkerMirroredStrategy
   - MultiWorkerMirroredStrategy is from the TF model in task.py main function
   - 2 workers as specified in worker_pool_specs
+  - one of the worker will be assigned to be Chief - to be responsible for syncing parameters and writing the output SavedModel to Cloud Storage
 
 ## Step 4
 After successful run of all cells, a Custom Job on Vertex AI is created.
@@ -54,6 +55,7 @@ It will be queued and prepared for provisioning, some waiting time is excepted.
 You should get the status from tne console as well as from Logs Explorer.
 The latter gives you more information regarding the progress of training, information and error of the job, lest it is not real-time basis. Still it is the best source for troubleshooting any problems.
 If everything is fine, the training job will be completed and the Saved_Model (in protocolbuffer) and other artifacts will be saved to Cloud Storage (or you can save it on Artifact Registry - which is the better option)
+
 
 
     
