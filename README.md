@@ -14,10 +14,28 @@ These all are tasks for a Machine Learning Engineer who has different skill set 
 As mentioned in the original repo, you need to set up your Google Cloud environment properly. 
 Your GCP/Vertex AI Platform environment can be different from mine but the pre-requisites are the same : a GCP Project, IAM permissions for yourself or any Service Account, Artifactory Registry, Cloud Storage Bucket and Jupyter Notebook (no GPU is required / indeed GPU cannot be attached to a notebook instance while you are on free trial)
 
-## step 1
+## Step 1
 Create a Dockerfile locally and build the docker image and push it to Artifact Registry.
 
 The original Dockerfile uses a base image with GPU capability. To use CPU only on multi-worker strategy, you need select the other options. A full list of base images can be found as follows:
 
 [Google DeepLearning Container](https://cloud.google.com/deep-learning-containers/docs/choosing-container)
+
+The image in my Dockerfile is:
+gcr.io/deeplearning-platform-release/tf2-cpu.2-12.py310
+
+Docker build command is simple and straightforward for local build:
+
+docker build ./ -t us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/flower_image_distributed:multi_machine
+
+Remember to use variables to match your own PROJECT_ID and Artifact Registry REPO_NAME.
+Please also make sure the tag: multi_machine or any unique tag you prefer is used
+
+## Step 2
+As indicated in the Dockerfile, you need to create a trainer directory with task.py undeer it since the entrypoint for the container will be the task.py as a module (task) under trainer (trainer/task).
+
+The task.py is the same as from Point 5 of the origin repo, it is the same for either a single worker or multiple workers.
+
+## Step 3
+
 
