@@ -16,3 +16,8 @@ Your GCP/Vertex AI Platform environment can be different from mine but the pre-r
 
 ## step 1
 Create a Dockerfile locally and build the docker image and push it to Artifact Registry.
+
+The original Dockerfile uses a base image with GPU capability. To use CPU only on multi-worker strategy, you need select the other options. A full list of base images can be found as follows:
+
+[Google DeepLearning Container](https://cloud.google.com/deep-learning-containers/docs/choosing-container)
+
