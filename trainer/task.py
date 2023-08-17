@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 ## Replace {your-gcs-bucket} !!
-BUCKET_ROOT='/gcs/{your-gcs-bucket}'
+BUCKET_ROOT='/gcs/vertex-test1-391714-bucket'
 
 # Define variables
 NUM_CLASSES = 5
@@ -14,6 +14,7 @@ IMG_HEIGHT = 180
 IMG_WIDTH = 180
 
 DATA_DIR = f'{BUCKET_ROOT}/flower_photos'
+SAVE_MODEL_DIR = f'{BUCKET_ROOT}/multi-machine-output'
 
 def create_datasets(data_dir, batch_size):
   '''Creates train and validation datasets.'''
@@ -58,6 +59,29 @@ def create_model():
   ])
   return model
 
+def _is_chief(task_type, task_id):
+      '''Helper function. Determines if machine is chief.'''
+
+  return task_type == 'chief'
+
+
+def _get_temp_dir(dirpath, task_id):
+      '''Helper function. Gets temporary directory for saving model.'''
+
+  base_dirpath = 'workertemp_' + str(task_id)
+  temp_dir = os.path.join(dirpath, base_dirpath)
+  tf.io.gfile.makedirs(temp_dir)
+  return temp_dir
+
+def write_filepath(filepath, task_type, task_id):
+      '''Helper function. Gets filepath to save model.'''
+
+  dirpath = os.path.dirname(filepath)
+  base = os.path.basename(filepath)
+  if not _is_chief(task_type, task_id):
+    dirpath = _get_temp_dir(dirpath, task_id)
+  return os.path.join(dirpath, base)
+
 def main():  
 
   # Create distribution strategy
@@ -81,8 +105,16 @@ def main():
     epochs=EPOCHS
   )
 
-  model.save(f'{BUCKET_ROOT}/model_output')
 
+  # Determine type and task of the machine from
+  # the strategy cluster resolver
+  task_type, task_id = (strategy.cluster_resolver.task_type,
+                        strategy.cluster_resolver.task_id)
+
+  # Based on the type and task, write to the desired model path
+  write_model_path = write_filepath(SAVE_MODEL_DIR, task_type, task_id)
+  model.save(write_model_path)
+  
 
 if __name__ == "__main__":
     main()

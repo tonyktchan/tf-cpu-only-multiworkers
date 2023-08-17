@@ -1,4 +1,4 @@
-FROM gcr.io/deeplearning-platform-release/tf2-cpu.2-11.py310
+FROM gcr.io/deeplearning-platform-release/tf2-cpu.2-12.py310
 
 WORKDIR /
 
