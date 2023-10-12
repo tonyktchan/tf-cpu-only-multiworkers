@@ -26,7 +26,7 @@ gcr.io/deeplearning-platform-release/tf2-cpu.2-12.py310
 
 Docker build command is simple and straightforward for local build:
 
-docker build ./ -t us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/flower_image_distributed:multi_machine
+<b>docker build ./ -t us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/flower_image_distributed:multi_machine</b>
 
 Remember to use variables to match your own PROJECT_ID and Artifact Registry REPO_NAME.
 Please also make sure the tag: multi_machine or any unique tag you prefer is used
@@ -61,7 +61,7 @@ If everything is fine, the training job will be completed and the Saved_Model (i
 ![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/7bf5cd1f-7325-4fa7-8087-2f57ac88a956)
 
 
-and the SavedModel can be found under the 'multi-machine-output' folder (dummy folder in fact):
+and the SavedModel can be found under the 'multi-machine-output' folder (indeed just a dummy folder for object storage):
 
 
 
