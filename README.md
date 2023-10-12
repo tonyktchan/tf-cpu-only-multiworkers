@@ -54,7 +54,7 @@ After successful run of all cells, a Custom Job on Vertex AI is created.
 It will be queued and prepared for provisioning, some waiting time is excepted.
 You should get the status from tne console as well as from Logs Explorer.
 The latter gives you more information regarding the progress of training, information and error of the job, lest it is not real-time basis. Still it is the best source for troubleshooting any problems.
-If everything is fine, the training job will be completed and the Saved_Model (in protocolbuffer) and other artifacts will be saved to Cloud Storage (or you can save it on Artifact Registry - which is the better option)
+If everything is fine, the training job will be completed and the Saved_Model (in protocolbuf) and other artifacts will be saved to Cloud Storage (or you can save it on Artifact Registry - which is the better option)
 
 
 
