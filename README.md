@@ -37,7 +37,7 @@ As indicated in the Dockerfile, you need to create a trainer directory with task
 The task.py is based on Point 5 of the origin repo, several functions are added for multiple workers and the most important one is to ensure the strategy used will be : MultiWorkerMirroredStrategy()
 
 ## Step 3
-When your image and task.py python file containing the CNN model and flower images (Training Data) are all ready, you can start your custom training on the Jupyter notebook.
+When your image and task.py python file containing the CNN model and flower images (Training Data) stored under your GCS Bucket (BUCKET_ROOT in task.py) are all ready, you can start your custom training on the Jupyter notebook.
 
 On your notebook instance/ JupyterLab console, open the Tensorflow 2 (local) Launcher to create a notebook flower-multi.ipynb:
 
@@ -57,13 +57,16 @@ The latter gives you more information regarding the progress of training, inform
 If everything is fine, the training job will be completed and the Saved_Model (in protocolbuffer) and other artifacts will be saved to Cloud Storage (or you can save it on Artifact Registry - which is the better option)
 
 
+
 ![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/7bf5cd1f-7325-4fa7-8087-2f57ac88a956)
 
 
-and the SavedModel can be found undeer the 'multi-machine-output' folder (dummy folder in fact):
+and the SavedModel can be found under the 'multi-machine-output' folder (dummy folder in fact):
+
 
 
 ![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/a4073ae2-98e4-47c0-a4eb-ab80465771d9)
+
 
 By then, your ML model is ready to be deployed!
 
