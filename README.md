@@ -32,7 +32,7 @@ Remember to use variables to match your own PROJECT_ID and Artifact Registry REP
 Please also make sure the tag: multi_machine or any unique tag you prefer is used
 
 ## Step 2
-As indicated in the Dockerfile, you need to create a trainer directory with task.py undeer it since the entrypoint for the container will be the task.py as a module (task) under trainer (trainer/task).
+As indicated in the Dockerfile, you need to create a trainer directory with task.py under it since the entrypoint for the container will be the task.py as a module (task) under trainer (trainer/task).
 
 The task.py is based on Point 5 of the origin repo, several functions are added for multiple workers and the most important one is to ensure the strategy used will be : MultiWorkerMirroredStrategy()
 
