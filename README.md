@@ -57,15 +57,14 @@ The latter gives you more information regarding the progress of training, inform
 If everything is fine, the training job will be completed and the Saved_Model (in protocolbuf) and other artifacts will be saved to Cloud Storage (or you can save it on Artifact Registry - which is the better option)
 
 
+![custom-job](a.png)
 
-![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/7bf5cd1f-7325-4fa7-8087-2f57ac88a956)
 
 
 and the SavedModel can be found under the 'multi-machine-output' folder (indeed just a dummy folder for object storage):
 
 
-
-![image](https://github.com/tonyktchan/tensorflow-cpu-multiworkers/assets/96426553/a4073ae2-98e4-47c0-a4eb-ab80465771d9)
+![job-completion](b.png)
 
 
 By then, your ML model is ready to be deployed!
